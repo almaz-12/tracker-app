@@ -35,4 +35,10 @@ onMounted(() => store.getAll())
   text-align: center;
   padding: 40px 20px;
 }
+
+.meditation-list {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr 1fr;
+}
 </style>
