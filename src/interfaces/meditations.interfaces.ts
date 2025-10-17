@@ -1,7 +1,7 @@
 export interface Meditation {
-  ID: number
+  id: number
   title: string
   description: string
-  created_at: string
-  duration_min: number
+  createdAt: string
+  durationMin: number
 }

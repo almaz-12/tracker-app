@@ -8,8 +8,9 @@
   --color-text-secondary: rgba(0, 0, 0, 1);
 
   --color-background-btn: rgba(124, 154, 146, 1);
+  --color-background-card: rgba(247, 243, 240, 1);
 
-  --main-font: 'Alegreya Sans', sans-serif;
+  --font-main: 'Alegreya Sans', sans-serif;
 }
 
 *,
@@ -23,7 +24,7 @@ body {
   color: var(--color-text-main);
   background: var(--color-background);
   line-height: 1.42;
-  font-family: var(--main-font);
+  font-family: var(--font-main);
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
