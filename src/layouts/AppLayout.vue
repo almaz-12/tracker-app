@@ -1,0 +1,20 @@
+<script lang="ts" setup>
+import AppHeader from './AppHeader.vue'
+</script>
+
+<template>
+  <div class="container">
+    <AppHeader />
+    <main class="main">
+      <slot></slot>
+    </main>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  max-width: 1130px;
+  padding: 0 15px;
+  margin: auto;
+}
+</style>
