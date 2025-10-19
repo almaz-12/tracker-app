@@ -5,3 +5,14 @@ export const API_BASE = `${BASE_URL}${API_ENDPOINT}`
 export const API_ROUTES = {
   meditations: '/meditations',
 }
+
+export const MOOD_STATES = ['good', 'relax', 'focus', 'anxiously'] as const
+
+export type MoodType = (typeof MOOD_STATES)[number]
+
+export const MOOD_LABELS = {
+  good: 'Спокойно',
+  relax: 'Расслабленно',
+  focus: 'Фокусировано',
+  anxiously: 'Тревожно',
+}
