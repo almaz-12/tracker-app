@@ -14,7 +14,7 @@ import VoteItem from './VoteItem.vue'
   </div>
 </template>
 
-<style scoped>
+<style>
 .vote {
   display: flex;
   flex-direction: column;

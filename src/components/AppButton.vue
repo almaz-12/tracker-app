@@ -10,9 +10,9 @@
 .button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
-  max-width: 111px;
+  max-width: 320px;
   width: 100%;
   padding: 10px 16px;
   border-radius: 10px;
@@ -22,7 +22,7 @@
   line-height: 18px;
   color: var(--color-text-main);
   cursor: pointer;
-  transition: all 0.2s easy-out;
+  transition: all 0.2s ease-in-out;
   border: none;
 }
 

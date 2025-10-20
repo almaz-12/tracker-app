@@ -7,8 +7,30 @@ export const routes = [
   {
     path: '/statistics',
     name: 'statistics',
-    component: () => import('@/views/MeditationStatisticsView.vue'),
+    component: () => import('@/views/StatisticsView.vue'),
   },
+  {
+    path: '/auth',
+    component: () => import('@/views/AuthView.vue'),
+    children: [
+      {
+        path: '',
+        name: 'auth',
+        component: () => import('@/views/AuthIndexView.vue'),
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('@/views/LoginView.vue'),
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/RegisterView.vue'),
+      },
+    ],
+  },
+
   {
     path: '/:pathMatch(.*)*',
     component: () => import('@/views/NotFound.vue'),

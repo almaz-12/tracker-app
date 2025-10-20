@@ -16,3 +16,8 @@ export const MOOD_LABELS = {
   focus: 'Фокусировано',
   anxiously: 'Тревожно',
 }
+
+export const LOGO = {
+  small: 48,
+  big: 202,
+}

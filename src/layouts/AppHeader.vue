@@ -1,11 +1,14 @@
 <script lang="ts" setup>
+import { LOGO } from '@/common/constants'
 import AppLogo from '@/components/AppLogo.vue'
 import AppMenu from '@/components/AppMenu.vue'
+
+const logoSize = LOGO.small
 </script>
 
 <template>
   <header class="header">
-    <AppLogo />
+    <AppLogo :width="logoSize" />
     <AppMenu />
   </header>
 </template>
