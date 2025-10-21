@@ -4,7 +4,14 @@ export const API_BASE = `${BASE_URL}${API_ENDPOINT}`
 
 export const API_ROUTES = {
   meditations: '/meditations',
+  profile: '/profile',
+  auth: {
+    login: '/auth/login',
+    register: '/auth/register',
+  },
 }
+
+export const TOKEN_KEY = 'token'
 
 export const MOOD_STATES = ['good', 'relax', 'focus', 'anxiously'] as const
 
