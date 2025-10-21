@@ -37,6 +37,27 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  async function register(username: string, email: string, password: string): Promise<void> {
+    try {
+      isLoading.value = true
+      errorMessage.value = ''
+
+      const response = await api.post(API_ROUTES.auth.login, {
+        username,
+        password,
+        email,
+      })
+
+      if (response.status !== 200) throw new Error(`Ошибка HTTP: ${response.status}`)
+
+      setToken(response.data.token)
+    } catch (error: any) {
+      errorMessage.value = error.response.data.error
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   // Функция для инициализации токена при загрузке приложения
   function initToken() {
     const storedToken = localStorage.getItem(TOKEN_KEY)
@@ -55,6 +76,7 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading,
     errorMessage,
     login,
+    register,
     initToken,
     logout,
     getToken,
