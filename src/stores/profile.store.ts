@@ -9,10 +9,14 @@ export const useProfileStore = defineStore('profile', () => {
   const isLoading = ref<boolean>(false)
   const errorMessage = ref<string>('')
 
+  function clearError() {
+    errorMessage.value = ''
+  }
+
   async function getProfile() {
     try {
       isLoading.value = true
-      errorMessage.value = ''
+      clearError()
 
       const response = await api.get<Profile>(API_ROUTES.profile)
 
@@ -20,7 +24,8 @@ export const useProfileStore = defineStore('profile', () => {
 
       profile.value = response.data
     } catch (error: any) {
-      errorMessage.value = error.response.data.error
+      errorMessage.value =
+        error?.response?.data?.message || error.message || 'Ошибка получения данных профиля'
     } finally {
       isLoading.value = false
     }

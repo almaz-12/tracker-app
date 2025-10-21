@@ -1,10 +1,11 @@
 import api from '@/api'
-import { API_BASE, API_ROUTES, TOKEN_KEY } from '@/common/constants'
+import { API_ROUTES, TOKEN_KEY } from '@/common/constants'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import type { Auth } from '@/interfaces/auth.interfaces'
 
 export const useAuthStore = defineStore('auth', () => {
-  const token = ref<string | null>(null)
+  const token = ref<string | null>(localStorage.getItem(TOKEN_KEY))
   const isLoading = ref<boolean>(false)
   const errorMessage = ref<string>('')
 
@@ -16,12 +17,16 @@ export const useAuthStore = defineStore('auth', () => {
   const getToken = computed(() => token.value)
   const isAuthenticated = computed(() => !!token.value)
 
+  function clearError() {
+    errorMessage.value = ''
+  }
+
   async function login(username: string, password: string): Promise<void> {
     try {
       isLoading.value = true
-      errorMessage.value = ''
+      clearError()
 
-      const response = await api.post(API_ROUTES.auth.login, {
+      const response = await api.post<Auth>(API_ROUTES.auth.login, {
         username,
         password,
       })
@@ -30,8 +35,7 @@ export const useAuthStore = defineStore('auth', () => {
 
       setToken(response.data.token)
     } catch (error: any) {
-      console.log(error)
-      errorMessage.value = error.response.data.error
+      errorMessage.value = error?.response?.data?.message || error.message || 'Ошибка авторизации'
     } finally {
       isLoading.value = false
     }
@@ -40,9 +44,9 @@ export const useAuthStore = defineStore('auth', () => {
   async function register(username: string, email: string, password: string): Promise<void> {
     try {
       isLoading.value = true
-      errorMessage.value = ''
+      clearError()
 
-      const response = await api.post(API_ROUTES.auth.login, {
+      const response = await api.post<Auth>(API_ROUTES.auth.login, {
         username,
         password,
         email,
@@ -52,7 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
 
       setToken(response.data.token)
     } catch (error: any) {
-      errorMessage.value = error.response.data.error
+      errorMessage.value = error?.response?.data?.message || error.message || 'Ошибка авторизации'
     } finally {
       isLoading.value = false
     }
