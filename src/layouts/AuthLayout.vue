@@ -14,7 +14,7 @@ const logoSize = LOGO.big
   </div>
 </template>
 
-<style scoped>
+<style>
 .auth {
   min-height: 100vh;
   display: flex;

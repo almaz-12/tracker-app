@@ -1,1 +1,13 @@
 @import './base.css';
+.loading,
+.error,
+.not-found {
+  text-align: center;
+  padding: 20px;
+  background: darkred;
+}
+.auth-form {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}

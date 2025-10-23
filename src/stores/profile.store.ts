@@ -1,11 +1,11 @@
 import api from '@/api'
-import { API_BASE, API_ROUTES } from '@/common/constants'
+import { API_ROUTES } from '@/common/constants'
 import type { Profile } from '@/interfaces/profile.interfaces'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useProfileStore = defineStore('profile', () => {
-  const profile = ref<Profile>()
+  const profile = ref<Profile | null>(null)
   const isLoading = ref<boolean>(false)
   const errorMessage = ref<string>('')
 
@@ -34,6 +34,7 @@ export const useProfileStore = defineStore('profile', () => {
   return {
     isLoading,
     errorMessage,
+    profile,
     getProfile,
   }
 })

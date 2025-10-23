@@ -17,7 +17,7 @@ function goLogin() {
         чтобы быть счастливым.
       </div>
 
-      <AppButton class="welcome__btn" @click="goLogin">Войти в приложение</AppButton>
+      <AppButton class="auth-btn" @click="goLogin">Войти в приложение</AppButton>
     </div>
   </AuthLayout>
 </template>
@@ -41,15 +41,7 @@ function goLogin() {
   font-size: 20px;
   line-height: 24px;
   text-align: center;
-
+  margin-bottom: 60px;
   color: #ffffff;
-}
-.welcome__btn {
-  padding: 15px 16px;
-  margin-top: 60px;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 25px;
-  background-color: rgb(124, 154, 146);
 }
 </style>
