@@ -30,7 +30,7 @@ async function submitForm() {
       Object.assign(formData, { username: '', email: '', password: '' })
     }
   } catch (error) {
-    console.error('Login failed:', error)
+    console.error('Register failed:', error)
   }
 }
 </script>

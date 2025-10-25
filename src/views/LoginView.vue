@@ -5,6 +5,7 @@ import AppButton from '@/components/AppButton.vue'
 import { computed, reactive, ref } from 'vue'
 import { useAuthStore } from '@/stores/auth.store'
 import { validator } from '@/utils/validator'
+import router from '@/router'
 
 const authStore = useAuthStore()
 
@@ -19,7 +20,17 @@ const isValidate = computed(() => {
 
 async function submitForm() {
   if (!isValidate.value) return
-  await authStore.login(formData.username, formData.password)
+
+  try {
+    await authStore.login(formData.username, formData.password)
+
+    if (authStore.getToken) {
+      router.replace({ name: 'main' })
+      Object.assign(formData, { username: '', password: '' })
+    }
+  } catch (error) {
+    console.error('Login failed:', error)
+  }
 }
 </script>
 
