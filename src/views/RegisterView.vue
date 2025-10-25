@@ -16,7 +16,11 @@ const formData = reactive({
 })
 
 const isValidate = computed(() => {
-  return validator.username(formData.username) && validator.password(formData.password)
+  return (
+    validator.username(formData.username) &&
+    validator.password(formData.password) &&
+    validator.email(formData.email)
+  )
 })
 
 async function submitForm() {
