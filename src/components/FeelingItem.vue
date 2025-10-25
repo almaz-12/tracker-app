@@ -6,24 +6,31 @@ import IconRelax from '@/icons/IconRelax.vue'
 import type { MoodType } from '@/common/constants'
 
 const { name } = defineProps<{ name: MoodType }>()
+const emit = defineEmits(['select'])
 
 const components = {
-  good: IconOk,
+  calm: IconOk,
   relax: IconRelax,
   focus: IconFocus,
-  anxiously: IconFocus,
+  anxiety: IconFocus,
+}
+
+function handleSelect(name: string) {
+  emit('select', name)
 }
 </script>
 
 <template>
-  <div class="vote__questions-img">
-    <component :is="components[name]" />
+  <div class="feeling-item" @click="handleSelect(name)">
+    <div class="feeling-item__img">
+      <component :is="components[name]" />
+    </div>
+    <div class="feeling-item__text">{{ MOOD_LABELS[name] }}</div>
   </div>
-  <div class="vote__questions-text">{{ MOOD_LABELS[name] }}</div>
 </template>
 
 <style scoped>
-.vote__questions-img {
+.feeling-item__img {
   width: 62px;
   height: 65px;
   margin: auto;

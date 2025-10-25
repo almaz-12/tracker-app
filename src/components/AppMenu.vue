@@ -2,6 +2,18 @@
 import IconChart from '@/icons/IconChart.vue'
 import IconExit from '@/icons/IconExit.vue'
 import IconPlay2 from '@/icons/IconPlay2.vue'
+import router from '@/router'
+import { useAuthStore } from '@/stores/auth.store'
+
+const authStore = useAuthStore()
+
+function logout() {
+  try {
+    authStore.logout()
+
+    router.replace({ name: 'main' })
+  } catch (error) {}
+}
 </script>
 
 <template>
@@ -20,7 +32,9 @@ import IconPlay2 from '@/icons/IconPlay2.vue'
         </RouterLink>
       </li>
       <li class="menu-list__item">
-        <RouterLink to="/logout" class="menu-list__link"> <IconExit /> Выход </RouterLink>
+        <RouterLink to="/logout" @click="logout" class="menu-list__link">
+          <IconExit /> Выход
+        </RouterLink>
       </li>
     </ul>
   </nav>
