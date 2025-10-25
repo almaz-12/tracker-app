@@ -46,13 +46,13 @@ export const useAuthStore = defineStore('auth', () => {
       isLoading.value = true
       clearError()
 
-      const response = await api.post<Auth>(API_ROUTES.auth.login, {
+      const response = await api.post<Auth>(API_ROUTES.auth.register, {
         username,
         password,
         email,
       })
 
-      if (response.status !== 200) throw new Error(`Ошибка HTTP: ${response.status}`)
+      if (response.status >= 300) throw new Error(`Ошибка HTTP: ${response.status}`)
 
       setToken(response.data.token)
     } catch (error: any) {

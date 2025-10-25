@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import VoteList from '@/components/VoteList.vue'
+import FeelingList from '@/components/FeelingList.vue'
 import UserProfile from '@/components/UserProfile.vue'
 </script>
 
 <template>
   <div class="sidebar">
     <UserProfile />
-    <VoteList />
+    <FeelingList />
   </div>
 </template>
 

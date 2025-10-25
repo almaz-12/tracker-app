@@ -21,7 +21,17 @@ const isValidate = computed(() => {
 
 async function submitForm() {
   if (!isValidate.value) return
-  await authStore.register(formData.username, formData.email, formData.password)
+
+  try {
+    await authStore.register(formData.username, formData.email, formData.password)
+
+    if (authStore.getToken) {
+      router.replace({ name: 'main' })
+      Object.assign(formData, { username: '', email: '', password: '' })
+    }
+  } catch (error) {
+    console.error('Login failed:', error)
+  }
 }
 </script>
 
