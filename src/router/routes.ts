@@ -5,6 +5,11 @@ export const routes = [
     component: () => import('@/views/MainView.vue'),
   },
   {
+    path: '/meditation',
+    name: 'meditation',
+    component: () => import('@/views/MeditationView.vue'),
+  },
+  {
     path: '/statistics',
     name: 'statistics',
     component: () => import('@/views/StatisticsView.vue'),

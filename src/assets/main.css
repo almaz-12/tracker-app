@@ -1,5 +1,7 @@
 @import './base.css';
-.loading,
+.loading {
+  background: green;
+}
 .error,
 .not-found {
   text-align: center;
