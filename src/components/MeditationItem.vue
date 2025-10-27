@@ -3,12 +3,17 @@ import type { Meditation } from '@/interfaces/meditations.interfaces'
 import AppButton from './AppButton.vue'
 import IconPlay from '@/icons/IconPlay.vue'
 import { computed } from 'vue'
+import router from '@/router'
 
 const props = defineProps<Meditation>()
 
 const duration = computed(() => {
   return `${props.durationMin} мин.`
 })
+
+function goMeditation() {
+  router.push({ name: 'meditation' })
+}
 </script>
 
 <template>
@@ -20,7 +25,7 @@ const duration = computed(() => {
       {{ props.description }}
     </div>
     <div class="meditation-item__footer">
-      <AppButton> Начать <IconPlay /> </AppButton>
+      <AppButton @click="goMeditation"> Начать <IconPlay /> </AppButton>
       <div class="meditation-item__duration">{{ duration }}</div>
     </div>
   </div>

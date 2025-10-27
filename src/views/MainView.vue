@@ -11,7 +11,6 @@ const authStore = useAuthStore()
 
 onMounted(() => {
   profileStore.getProfile()
-  // authStore.login('asd', 'asd')
 })
 </script>
 

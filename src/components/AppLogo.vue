@@ -5,8 +5,8 @@ const { width } = defineProps<{ width: number }>()
 </script>
 
 <template>
-  <RouterLink to="main">
-    <img src="../assets/logo.svg" alt="Лого" :width="width" />
+  <RouterLink to="/">
+    <img src="../assets/logo.svg" alt="Медитации" :width="width" />
   </RouterLink>
 </template>
 

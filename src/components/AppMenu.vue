@@ -8,11 +8,8 @@ import { useAuthStore } from '@/stores/auth.store'
 const authStore = useAuthStore()
 
 function logout() {
-  try {
-    authStore.logout()
-
-    router.replace({ name: 'main' })
-  } catch (error) {}
+  authStore.logout()
+  router.replace({ name: 'login' })
 }
 </script>
 
