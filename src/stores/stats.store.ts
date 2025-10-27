@@ -18,11 +18,11 @@ export const useStatsStore = defineStore('stats', () => {
       isLoading.value = true
       clearError()
 
-      const response = await api.get<Stats>(API_ROUTES.stats)
+      const response = await api.get(API_ROUTES.stats)
 
       if (response.status !== 200) throw new Error(`Ошибка HTTP: ${response.status}`)
 
-      stats.value = response.data
+      stats.value = response.data.data.summary
     } catch (error: any) {
       errorMessage.value =
         error?.response?.data?.message || error.message || 'Ошибка получения данных профиля'
@@ -32,7 +32,7 @@ export const useStatsStore = defineStore('stats', () => {
   }
 
   async function setStat(
-    type: 'duration_min' | 'feeling_calm' | 'feeling_relax' | 'feeling_focus' | 'feeling_anxiety',
+    type: 'total_minutes' | 'total_calm' | 'total_relax' | 'total_focus' | 'total_anxiety',
     value: number,
   ) {
     try {

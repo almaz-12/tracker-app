@@ -31,3 +31,11 @@ export const LOGO = {
 }
 
 export const INIT_TIME = 300
+
+export const STATS_TEXT = {
+  total_minutes: 'Минут медитации',
+  total_relax: 'Расслабленных дней',
+  total_focus: 'Фокусированных дней',
+  total_calm: 'Спокойных дней',
+  total_anxiety: 'Тревожных дней',
+}

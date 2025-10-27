@@ -35,7 +35,19 @@ const props = defineProps<{ type: string; count: number; text: string }>()
   color: #ffffff;
 }
 
-.duration_min {
-  background: url('@/assets/duration_min-bg.png') no-repeat center/cover;
+.total_minutes {
+  background: url('@/assets/total_minutes.png') no-repeat center/cover;
+}
+.total_calm {
+  background: url('@/assets/total_calm.png') no-repeat center/cover;
+}
+.total_relax {
+  background: url('@/assets/total_relax.png') no-repeat center/cover;
+}
+.total_focus {
+  background: url('@/assets/total_focus.png') no-repeat center/cover;
+}
+.total_anxiety {
+  background: url('@/assets/total_anxiety.png') no-repeat center/cover;
 }
 </style>
