@@ -29,3 +29,5 @@ export const LOGO = {
   small: 48,
   big: 202,
 }
+
+export const INIT_TIME = 300

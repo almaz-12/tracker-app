@@ -4,12 +4,20 @@ import IconStart from '@/icons/IconStart.vue'
 import IconCheck from '@/icons/IconCheck.vue'
 import IconReload from '@/icons/IconReload.vue'
 import AppHeader from '@/layouts/AppHeader.vue'
+import PopupAlert from '@/components/PopupAlert.vue'
+
 import { ref, onUnmounted } from 'vue'
 import { formatTime } from '@/utils/timer'
+import { INIT_TIME } from '@/common/constants'
+import { useStatsStore } from '@/stores/stats.store'
+import StatisticItem from '@/components/StatisticItem.vue'
+
 const isStart = ref(false)
-const timer = ref(300)
+const timer = ref(INIT_TIME)
 const timerInterval = ref<number | null>(null)
-const elapsedTime = ref(0) // Прошедшее время в секундах
+const elapsedTime = ref(0)
+const statStore = useStatsStore()
+const isPopupOpened = ref(false)
 
 const startTimer = () => {
   isStart.value = true
@@ -39,12 +47,14 @@ const toggleTimer = () => {
   }
 }
 
-function sendTime() {
-  console.log(elapsedTime.value)
+async function sendTime() {
+  await statStore.setStat('duration_min', elapsedTime.value)
+  isPopupOpened.value = true
+  reloadTimer()
 }
 
 function reloadTimer() {
-  timer.value = 300
+  timer.value = INIT_TIME
   isStart.value = false
   elapsedTime.value = 0
   if (timerInterval.value) {
@@ -93,6 +103,8 @@ onUnmounted(() => {
         </button>
       </div>
     </div>
+
+    <PopupAlert message="Данные сохранены" :is-opened="isPopupOpened" @ok="isPopupOpened = false" />
   </div>
 </template>
 

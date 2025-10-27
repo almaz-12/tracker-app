@@ -31,7 +31,10 @@ export const useStatsStore = defineStore('stats', () => {
     }
   }
 
-  async function setStats(type: string, value: number) {
+  async function setStat(
+    type: 'duration_min' | 'feeling_calm' | 'feeling_relax' | 'feeling_focus' | 'feeling_anxiety',
+    value: number,
+  ) {
     try {
       isLoading.value = true
       clearError()
@@ -43,7 +46,7 @@ export const useStatsStore = defineStore('stats', () => {
 
       if (response.status !== 200) throw new Error(`Ошибка HTTP: ${response.status}`)
 
-      stats.value = response.data
+      // stats.value = response.data
     } catch (error: any) {
       errorMessage.value =
         error?.response?.data?.message || error.message || 'Ошибка получения данных профиля'
@@ -57,6 +60,6 @@ export const useStatsStore = defineStore('stats', () => {
     errorMessage,
     stats,
     getStats,
-    setStats,
+    setStat,
   }
 })
